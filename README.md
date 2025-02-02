@@ -2,17 +2,10 @@
 
 Currently WIP. Come back later (:
 
-## Roadmap
+## Learn More 
 
-* [ ] Core library
-* [ ] Preprocessor
-* [ ] Parser
-* [ ] Semantic analysis 
-* [ ] IR
-* [ ] Lowering
-
-  - [ ] 8051 
-
+* [Roadmap](./ROADMAP.md)
+* [Contributing](./CONTRIBUTING.md)
 
 ## License
 
