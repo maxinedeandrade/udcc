@@ -15,19 +15,34 @@
 
 #include <udcc/Basic/Allocator.h>
 
-#include <udcc/Basic/Platform.h>
+#include <assert.h>
+#include <stdlib.h>
 
 void *Allocate(Allocator *allocator, size_t size)
 {
-  return allocator->allocate(allocator->userData, size);
+  void *p = allocator
+                ? allocator->allocate(allocator->userData, size)
+                : malloc(size);
+
+  assert(NULL != p && "allocate() failed");
+
+  return p;
 }
 
 void *Reallocate(Allocator *allocator, void *p, size_t size)
 {
-  return allocator->reallocate(allocator->userData, p, size);
+  void *p = allocator
+                ? allocator->reallocate(allocator->userData, p, size)
+                : realloc(p, size);
+
+  assert(NULL != p && "reallocate() failed");
+
+  return p;
 }
 
 void Free(Allocator *allocator, void *p)
 {
-  allocator->free(allocator->userData, p);
+  allocator
+      ? allocator->free(allocator->userData, p)
+      : free(p);
 }
