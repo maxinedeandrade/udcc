@@ -31,13 +31,13 @@ void *Allocate(Allocator *allocator, size_t size)
 
 void *Reallocate(Allocator *allocator, void *p, size_t size)
 {
-  void *p = allocator
-                ? allocator->reallocate(allocator->userData, p, size)
-                : realloc(p, size);
+  void *newP = allocator
+                   ? allocator->reallocate(allocator->userData, p, size)
+                   : realloc(p, size);
 
-  assert(NULL != p && "reallocate() failed");
+  assert(NULL != newP && "reallocate() failed");
 
-  return p;
+  return newP;
 }
 
 void Free(Allocator *allocator, void *p)
